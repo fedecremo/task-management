@@ -1,0 +1,289 @@
+<html>
+<head>
+	<title><%= user.username %>'s Profile</title>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+		google.charts.load('current', {'packages':['gantt']});
+		google.charts.setOnLoadCallback(drawChart);
+
+		function millisecondsToDays(ms) {
+			return ms / 24 / 60 / 60 / 1000;
+		}
+
+		function returnMatrix() {
+			return matrix = [
+				['0', 'Find Sources', 'blue', basta = new Date(2018, 5, 7), un = new Date(2018, 8, 24), millisecondsToDays(un-basta), 33, null],
+				['1', 'Create Bibliography', 'green', poco = new Date(2018, 7, 7), di = new Date(2018, 8, 24), millisecondsToDays(di-poco), 25, null],
+				['2', 'Outline paper', 'red', zucchero = new Date(2018, 6, 7), e = new Date(2018, 7, 24), millisecondsToDays(e-zucchero), 10, null],
+				['3', 'Write paper', 'red', la = new Date(2018, 5, 7), pillola = new Date(2018, 8, 24), millisecondsToDays(pillola-la), 90, null],
+				['4', 'Hand in paper', 'yellow', va = new Date(2018, 5, 7), giu = new Date(2018, 8, 17), millisecondsToDays(giu-va), 50, null]
+			]
+		}
+
+		function drawChart() {
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'Task ID');
+			data.addColumn('string', 'Task Name');
+			data.addColumn('string', 'Resource');
+			data.addColumn('date', 'Start Date');
+			data.addColumn('date', 'End Date');
+			data.addColumn('number', 'Duration');
+			data.addColumn('number', 'Percent Complete');
+			data.addColumn('string', 'Dependencies');
+
+			mat = returnMatrix();
+			//prendo i dati degli array con cui popolare il grafico
+			for(i=0; i<5; i++) {
+				data.addRows([mat[i]]);
+			}
+
+			var options = {
+				height: 250,
+				width: 1200,
+				gantt: {
+					criticalPathEnabled: false,
+					innerGridHorizLine: {
+						stroke: '#a0a0a0',		//stroke = contorno
+						strokeWidth: 1
+					},
+					innerGridTrack: {
+						fill: '#fff'		//colore delle righe dispari
+					},
+					innerGridDarkTrack: {
+						fill: '#e5e5e5'		//colore delle righe pari
+					}
+				}
+			};
+			var chart = new google.visualization.Gantt(document.getElementById('chart_div'));
+			chart.draw(data, options);
+		}
+	</script>
+	<style>
+		body{
+			font-family: Tahoma;
+			font-weight: 1;
+		}
+		table {
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+		td {
+			border-bottom: 1px solid #dddddd;
+			border-top: 1px solid #dddddd;
+			width: 15%;
+			height: 25px;
+			text-align: center;
+		}
+		nav{
+			background: #ff5353;
+			padding: 20px 10px;
+		}
+		nav ul{
+			max-width: 960px;
+			margin: 0 ;
+			padding: 0;
+		}
+		nav li{
+			list-style-type: none;
+			display: inline-block;
+			margin: 0 10px 0 0;
+		}
+		nav a{
+			color: #fff;
+			font-size: 18px;
+			background: rgba(255,255,255,0.2);
+			text-decoration: none;
+			padding: 10px;
+			display: block;
+		}
+		ul#menu {
+			font-family: Verdana, sans-serif;
+			font-size: 11px;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		ul#menu li {
+			background-color: #ff5353;
+			border-bottom: 5px solid red;
+			display: block;
+			width: 133px;
+			height: 46px;
+			margin: 2px;
+			font-size: 15px;
+		}
+		ul#menu li a {
+			color: #fff;
+			display: block;
+			font-weight: bold;
+			line-height: 40px;
+			text-decoration: none;
+			width: 133px;
+			height: 46px;
+			text-align: center;
+		}
+		ul#menu li.active, ul#menu li:hover {
+			background-color: #ff2020;
+			border-bottom: 5px solid #A52614;
+		}
+		#table_head {
+			font-weight: bold;
+			color: #909090;
+		}
+		#title_div {
+			border-style: outset;
+			border-width: 3px;
+			background-color: #e5e5e5;
+			font-size: 15px;
+			font-family: Tahoma;
+			text-align: center;
+		}
+		#normie {
+			color: #fff;
+			display: block;
+			font-weight: bold;
+			line-height: 30px;
+			text-decoration: none;
+			width: 150px;
+			height: 30px;
+			text-align: center;
+		}
+		#menu_div, #chart_div {
+    	float: left;
+    }
+		#menu_div {
+			width: 10%;
+			margin-top: 36px;
+		}
+		#chart_div {
+			width: 90%;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul>
+			<li class="logout-btn"><a href="/auth/logout">Log out</a></li>
+			<li><a href="/">Homepage</a></li>
+		</ul>
+	</nav>
+		<div id="title_div">
+			<h3 id="title_project">Welcome <%= user.username %></h3>
+			<p id="title_user">ID: <%= user.id %></p>
+		</div>
+	<main>
+			<div id="menu_div">
+				<ul id="menu">
+					<li class="active"><a href="#">Project 1</a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+					<li><a href="#"></a></li>
+				</ul>
+			</div>
+			<br>
+			<br>
+			<div id="chart_div">
+				<!-- grafico -->
+			</div>
+		<br><br>
+	</main>
+	<div id="div1">
+		<table>
+			<tr id="table_head">
+				<td>TASK ID</td>
+				<td>TASK NAME</td>
+				<td>RESOURCE</td>
+				<td>START DATE</td>
+				<td>END DATE</td>
+				<td>DURATION</td>
+				<td>PERCENT COMPLETE</td>
+			</tr>
+		</table>
+		<table id="table">
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+		<script>
+			var arr = returnMatrix();
+			table = document.getElementById("table");
+			for(j=0; j<5; j++){
+				for(k=0; k<7; k++){
+					value = arr[j][k];
+					if(value){
+						if(k == 3 || k == 4){
+							var date = String(value).slice(0, 15);
+							table.rows[j].cells[k].innerHTML = date;
+						}
+						else if(k == 5) {
+							table.rows[j].cells[k].innerHTML = value + " days";
+						}
+						else if(k == 6){
+							if(parseInt(value) != 0) {
+								table.rows[j].cells[k].innerHTML = value + " %";
+							}
+							else {
+								table.rows[j].cells[k].innerHTML = "0 %";
+							}
+						}
+						else {
+							table.rows[j].cells[k].innerHTML = value;
+						}
+					}
+				}
+			}
+		</script>
+	</div>
+</body>
+</html>
