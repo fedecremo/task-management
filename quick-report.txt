@@ -1,0 +1,83 @@
+formato email: Report Lunedì 10/09
+URL: https://github.com/fedecremo/stage2019
+URL: https://github.com/fedecremo/task-management
+
+lunedi 10 settembre 2018
+- studio di che cos'è Google Chart
+- realizzazione di alcuni Charts di prova
+- realizzazione di una pagina con Gantt Chart per la supervisione dei task
+	questo Chart contiene alcuni task inventati da me per testare il funzionamento
+- realizzazione di una tabella sottostante il Chart che mostra le informazioni dettagliate del task cliccato
+- lieve miglioramento dell'estetica della pagina
+
+martedi 11 settembre 2018
+- Andrea mi ha mostrato come fare l'upload di file su GitHub
+- creazione di un menu in html come quello in esempio
+- modifica della pagina con titolo, chart e tabella esteticamente più belle
+- upload dei file su GitHub
+- profilo GitHub: https://github.com/fedecremo/stage2019
+
+mercoledi 12 settembre 2018
+- miglioramento dell'estetica della pagina
+- creazione di un menu verticale a scomparsa
+- creazione di un <div> che fa da "titolo" della pagina
+	il <div> contiene nome del progetto, proprietario e data di fine
+- unione del menu a scomparsa con il grafico e la tabella
+
+giovedi 13 settembre 2018
+- aggiunta di una immagine di background
+- studio di SLDS ed Express.js
+- installazione di Ubuntu sul PC 
+	mi trovo meglio ad eseguire programmi in node su Ubuntu più che su Windows
+- creazione di una pagina con le caratteristiche CSS di SLDS
+	la pagina è come quella nella consegna, vanno solo corrette un paio di cose
+
+venerdi 14 settembre 2018
+- la visualizzazione della pagina in stile SLDS avviene con node (per prova, presso localhost:8080)
+- update del mio GitHub
+	ora la mia repository è più ordinata e comprensibile per persone al di fuori di me
+	le diverse versioni dei file contengono una spiegazione delle "novità" di ogni nuova versione
+- update del README.md su GitHub
+	il file ora contiene una spiegazione dettagliata di tutto il progetto e di tutti i file caricati
+- miglioramento dell'estetica della pagina
+	inizialmente, il grafico risultava spostato in una brutta posizione
+	il layout della pagina è ispirato alla impaginazione presente sul pdf di progetto che mi hai mandato
+- collegamento del grafico e della tabella in basso
+	cliccando su una (e una soltanto) barra del grafico, le relative informazioni verranno mostrate nella tabella
+
+lunedi 17 settembre 2018
+- studio di passport.js
+- creazione di semplice form di autenticazione
+- creazione di semplice software e middleware di autenticazione
+- consultazione di diversi siti con tutorial su come realizzare un'autenticazione con passport.js
+- creazione di una directory "Passport" con dentro ciò che sono riuscito a fare
+
+martedi 18 settembre 2018
+- studio di autenticazione con google
+- ho seguito un tutorial per eseguire l'autenticazione tramite google+ 
+	il tutorial è durato diverse ore
+- ho iniziato ad adattare l'esempio che ho realizzato seguendo il tutorial al mio progetto
+
+mercoledi 19 settembre 2018
+- unione del progetto di autenticazione con la pagina web col grafico e la tabella dei task
+
+giovedi 20 settembre 2018
+- ho implementato la procedura di logout aggiungendo l'omonimo tasto nella pagina del profilo
+- la pagina di profilo mostra il nome e l'id del cliente loggato
+- è presente un menù verticale con la lista dei progetti attivi (solo 1 nel mio esempio)
+- il recupero degli array contenenti le informazioni che vanno a popolare grafico e tabella avviene diversamente
+	la matrice con i diversi array di dati viene ottenuta in qualsiasi momento con la funzione returnMatrix()
+- la tabella in basso mostra tutti i task del progetto aperto con relativi dettagli
+	prima invece la tabella si riempiva con i dettagli del task su cui l'utente cliccava
+- sono riuscito a calcolare la duarata dei task e a mostrarla in tabella (!)
+
+
+venerdi 21 settembre 2018
+- ho aggiunto il tasto "Homepage" nella pagina del profilo 
+- ho aggiunto il tasto "Profilo" nella homepage
+- ho ripulito il codice da righe vecchie ormai inutili
+- ho reso il codice più leggibile mettendo in ordine le direttive di stile e semplificando alcune funzioni
+- miglioramento dell'estetica della pagina
+- ho creato una nuova repository su GitHub (https://github.com/fedecremo/task-management) 
+	lì sono caricati i file del progetto finale
+- ho scritto un report più dettagliato
